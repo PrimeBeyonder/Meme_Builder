@@ -1,0 +1,94 @@
+{
+    "featuredTracks": [
+      {
+        "title": "Summer Vibes",
+        "singer": "Sarah Johnson",
+        "tags": ["Pop", "Summer", "Feel Good"],
+        "coverImage": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=500&h=500&fit=crop",
+        "uploadedBy": {
+          "name": "Sarah J",
+          "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop"
+        },
+        "likes": 1234,
+        "comments": 89,
+        "favourite": true
+      },
+      {
+        "title": "Midnight Jazz",
+        "singer": "The Jazz Quartet",
+        "tags": ["Jazz", "Instrumental"],
+        "coverImage": "https://images.unsplash.com/photo-1511735111819-9a3f7709049c?w=500&h=500&fit=crop",
+        "uploadedBy": {
+          "name": "Jazz Q",
+          "avatar": "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=100&h=100&fit=crop"
+        },
+        "likes": 856,
+        "favourite": false,
+        "comments": 42
+      },
+      {
+        "title": "Electronic Dreams",
+        "singer": "Pulse",
+        "tags": ["Electronic", "Dance"],
+        "coverImage": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=500&h=500&fit=crop",
+        "uploadedBy": {
+          "name": "Pulse",
+          "avatar": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=100&h=100&fit=crop"
+        },
+        "likes": 2341,
+        "favourite": true,
+        "comments": 156
+      },
+      {
+        "title": "Acoustic Morning",
+        "singer": "Emma Woods",
+        "tags": ["Acoustic", "Folk"],
+        "coverImage": "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=500&h=500&fit=crop",
+        "uploadedBy": {
+          "name": "Emma W",
+          "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop"
+        },
+        "likes": 945,
+        "favourite": true,
+        "comments": 67
+      }
+    ],
+    "features": [
+      {
+        "title": "Upload & Share",
+        "description": "Share your music with the world. Upload tracks and let others discover your talent."
+      },
+      {
+        "title": "Connect",
+        "description": "Build your network of followers and connect with other musicians and music lovers."
+      },
+      {
+        "title": "Create Playlists",
+        "description": "Curate your perfect playlist. Mix and match tracks to create the perfect vibe."
+      },
+      {
+        "title": "Stream Anywhere",
+        "description": "Listen to your favorite tracks anywhere, anytime. Our platform works on all devices."
+      }
+    ],
+    "testimonials": [
+      {
+        "content": "Melodify has completely changed how I share my music. The community is amazing!",
+        "author": "Alex Thompson",
+        "role": "Independent Artist",
+        "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop"
+      },
+      {
+        "content": "The best platform for discovering new music and connecting with other artists.",
+        "author": "Maria Garcia",
+        "role": "Music Producer",
+        "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop"
+      },
+      {
+        "content": "Clean interface, great features, and an amazing selection of music.",
+        "author": "James Wilson",
+        "role": "Music Enthusiast",
+        "avatar": "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=100&h=100&fit=crop"
+      }
+    ]
+  }
