@@ -44,27 +44,32 @@ export function MainNav() {
           {/* Centered Navigation Links */}
           <nav className="flex-1 hidden md:flex items-center justify-center space-x-8">
             {["Explore", "About", "Features", "Contact"].map((item) => (
-              <a
+                <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-sm font-medium transition-colors hover:text-primary"
-              >
+                className="text-sm font-medium text-gray-800 transition-colors duration-300 hover:text-primary relative group"
+                >
                 {item}
-              </a>
+
+                {/* Subtle underline effect */}
+                <span className="absolute inset-x-0 bottom-0 h-0.5 bg-primary scale-x-0 transition-all duration-300 group-hover:scale-x-100"></span>
+                </a>
             ))}
-          </nav>
+            </nav>
+
+
 
           <div className="flex items-center space-x-4">
             {/* Language Toggle Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="px-3 py-1.5">
-                  {language === "ENG" ? "ENG" : "日本語"}
+                  {language === "ENG" ? "ENG" : "日本"}
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-24">
                 <DropdownMenuItem onClick={() => setLanguage("ENG")}>ENG</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setLanguage("JP")}>日本語</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setLanguage("JP")}>日本</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
