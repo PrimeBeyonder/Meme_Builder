@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Music2 } from "lucide-react";
+import { Music2 } from 'lucide-react';
 import { ModeToggle } from "@/app/mode-toggle";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
@@ -30,12 +30,12 @@ export function MainNav() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 w-full z-50 transition-all duration-300",
+        "fixed w-full z-50 transition-all duration-300",
         isScrolled ? "bg-background/80 backdrop-blur-md border-b" : "bg-transparent"
       )}
     >
-      <div className="container mx-auto px-4 sm:px-6 md:py-2">
-        <div className="flex h-16 items-center justify-between">
+      <div className="max-w-[1400px] w-full mx-auto px-4 sm:px-6 md:py-2">
+        <div className="flex h-16 items-center justify-between w-full">
           <div className="flex items-center space-x-2">
             <Music2 className="h-6 w-6" />
             <span className="font-bold text-xl hidden sm:inline-block">Melodify</span>
@@ -44,20 +44,17 @@ export function MainNav() {
           {/* Centered Navigation Links */}
           <nav className="flex-1 hidden md:flex items-center justify-center space-x-8">
             {["Explore", "About", "Features", "Contact"].map((item) => (
-                <a
+              <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
                 className="text-sm font-medium text-gray-800 transition-colors duration-300 hover:text-primary relative group"
-                >
+              >
                 {item}
-
                 {/* Subtle underline effect */}
                 <span className="absolute inset-x-0 bottom-0 h-0.5 bg-primary scale-x-0 transition-all duration-300 group-hover:scale-x-100"></span>
-                </a>
+              </a>
             ))}
-            </nav>
-
-
+          </nav>
 
           <div className="flex items-center space-x-4">
             {/* Language Toggle Dropdown */}

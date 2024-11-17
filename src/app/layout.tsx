@@ -18,18 +18,18 @@ export const metadata: Metadata = {
   title: "Melodify",
   description: "Upload Your Fav Song Where Everyone Can Listean",
 };
+import React from 'react';
 
-export default function RootLayout(
-  {
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>)
- {
+export default function RootLayout({ children }: React.PropsWithChildren<object>) {
   return (
     <html lang="en">
+      <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"/>
+      <meta name="apple-mobile-web-app-capable" content="yes"/>
+      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} max-w-[1400px] items-center mx-auto antialiased`}
       >
         {children}
       </body>
