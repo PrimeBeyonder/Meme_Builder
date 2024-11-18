@@ -13,14 +13,14 @@ import 'swiper/css'
 const featuredSongs = [
   { id: 1, title: "Love YourSelf", artist: "Justin Bieber", cover: "/song_cover/LoveYourself.png", audio: "/simple_mp3/loveUrSelf.mp3" },
   { id: 2, title: "All Girl Are The Same", artist: "Jucice", cover: "/song_cover/allGirlAreTheSame.jpg", audio: "/simple_mp3/allGirlAreTheSame.mp3" },
-  { id: 3, title: "Dance Monkey", artist: "Tones and I", cover: "/song_cover/dance-monkey.jpg", audio: "/simple_mp3/dance-monkey.mp3" },
+  { id: 3, title: "About You", artist: "The 1975", cover: "/song_cover/aboutYou.jpg", audio: "/simple_mp3/aboutYou.mp3" },
   { id: 4, title: "Watermelon Sugar", artist: "Harry Styles", cover: "/song_cover/watermelon-sugar.jpg", audio: "/simple_mp3/watermelon-sugar.mp3" },
   { id: 5, title: "Don't Start Now", artist: "Dua Lipa", cover: "/song_cover/dont-start-now.jpg", audio: "/simple_mp3/dont-start-now.mp3" },
 ]
 
 const relatedArtists = [
   { name: "Juice WRLD", image: "/artists/juceWrld.png" },
-  { name: "The 1975", image: "/artists/the-1975.jpg" },
+  { name: "The 1975", image: "/artists/the1975.jpg" },
   { name: "Tyler, The Creator", image: "/artists/tyler-the-creator.jpg" },
   { name: "Playboi Carti", image: "/artists/playboi-carti.jpg" },
   { name: "Travis Scott", image: "/artists/travis-scott.jpg" },
