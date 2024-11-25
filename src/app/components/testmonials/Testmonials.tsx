@@ -1,9 +1,14 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import React from 'react'
+import { useMediaQuery } from 'react-responsive'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Pagination } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { Card, CardContent } from "@/components/ui/card"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Star } from 'lucide-react'
 
 interface Testimonial {
   name: string
@@ -41,141 +46,59 @@ const testimonials: Testimonial[] = [
   }
 ]
 
-export default function TestimonialsSection() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [direction, setDirection] = useState(0)
-
-  const nextTestimonial = () => {
-    if (currentIndex < testimonials.length - 1) {
-      setDirection(1)
-      setCurrentIndex((prevIndex) => prevIndex + 1)
-    }
-  }
-
-  const prevTestimonial = () => {
-    if (currentIndex > 0) {
-      setDirection(-1)
-      setCurrentIndex((prevIndex) => prevIndex - 1)
-    }
-  }
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      if (currentIndex < testimonials.length - 1) {
-        nextTestimonial()
-      } else {
-        setCurrentIndex(0)
-        setDirection(1)
-      }
-    }, 10000) // Auto-advance every 10 seconds
-    return () => clearInterval(timer)
-  }, [currentIndex])
-
-  return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-900">
-      <div className="container relative">
-        <motion.h2 
-          className="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-900 dark:text-white"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          Voices of Success
-        </motion.h2>
-        <div className="relative w-full max-w-4xl mx-auto">
-          <AnimatePresence initial={false} custom={direction}>
-            <motion.div
-              key={currentIndex}
-              custom={direction}
-              variants={{
-                enter: (direction: number) => ({
-                  x: direction > 0 ? 300 : -300,
-                  opacity: 0,
-                }),
-                center: {
-                  zIndex: 1,
-                  x: 0,
-                  opacity: 1,
-                },
-                exit: (direction: number) => ({
-                  zIndex: 0,
-                  x: direction < 0 ? 300 : -300,
-                  opacity: 0,
-                }),
-              }}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.4 },
-              }}
-              className="absolute w-full"
-            >
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden">
-                <div className="flex flex-col md:flex-row items-center p-8 md:p-12">
-                  <div className="w-full md:w-1/3 mb-6 md:mb-0 md:pr-8">
-                    <div className="relative w-32 h-32 mx-auto md:w-full md:h-0 md:pb-[100%] rounded-full overflow-hidden border-4 border-primary">
-                      <motion.img
-                        src={testimonials[currentIndex].image}
-                        alt={testimonials[currentIndex].name}
-                        className="absolute w-full h-full object-cover"
-                        initial={{ scale: 1.1 }}
-                        animate={{ scale: 1 }}
-                        transition={{ duration: 0.4 }}
-                      />
-                    </div>
-                    <div className="text-center mt-4">
-                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                        {testimonials[currentIndex].name}
-                      </h3>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        {testimonials[currentIndex].role} at {testimonials[currentIndex].company}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="w-full md:w-2/3">
-                    <div className="flex mb-4">
-                      {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                        <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
-                      ))}
-                    </div>
-                    <p className="text-lg md:text-xl italic mb-4 text-gray-700 dark:text-gray-300">
-                      &quot;{testimonials[currentIndex].content}&quot;
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-          <div className="absolute top-1/2 left-0 right-0 transform -translate-y-1/2 flex justify-between px-4">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={prevTestimonial}
-              disabled={currentIndex === 0}
-              className={`rounded-full bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 ${
-                currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''
-              }`}
-            >
-              <ChevronLeft className="h-4 w-4" />
-              <span className="sr-only">Previous testimonial</span>
-            </Button>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={nextTestimonial}
-              disabled={currentIndex === testimonials.length - 1}
-              className={`rounded-full bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 ${
-                currentIndex === testimonials.length - 1 ? 'opacity-50 cursor-not-allowed' : ''
-              }`}
-            >
-              <ChevronRight className="h-4 w-4" />
-              <span className="sr-only">Next testimonial</span>
-            </Button>
-          </div>
+const TestimonialCard: React.FC<Testimonial> = ({ name, role, company, content, image, rating }) => (
+  <Card className="min-h-56">
+    <CardContent className="p-6 flex flex-col justify-between h-full">
+      <div className="mb-4">
+        <p className="text-muted-foreground italic mb-4">&ldquo;{content}&rdquo;</p>
+        <div className="flex items-center space-x-1">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} className={`w-4 h-4 ${i < rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}`} />
+          ))}
         </div>
       </div>
-    </section>
+      <div className="flex items-center space-x-4">
+        <Avatar>
+          <AvatarImage src={image} alt={name} />
+          <AvatarFallback>{name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+        </Avatar>
+        <div>
+          <p className="font-semibold">{name}</p>
+          <p className="text-sm text-muted-foreground">{role} at {company}</p>
+        </div>
+      </div>
+    </CardContent>
+  </Card>
+)
+
+export default function Testimonials() {
+  const isMobile = useMediaQuery({ query: '(max-width: 640px)' })
+
+  return (
+    <div className="py-12 px-4 md:px-6 lg:px-8">
+      <h2 className="text-3xl font-bold text-center mb-12">What Our Clients Say</h2>
+      {isMobile ? (
+        <Swiper
+          modules={[Pagination]}
+          spaceBetween={20}
+          slidesPerView={1}
+          pagination={{ clickable: true }}
+          className="w-full"
+        >
+          {testimonials.map((testimonial, index) => (
+            <SwiperSlide key={index}>
+              <TestimonialCard {...testimonial} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {testimonials.map((testimonial, index) => (
+            <TestimonialCard key={index} {...testimonial} />
+          ))}
+        </div>
+      )}
+    </div>
   )
 }
+

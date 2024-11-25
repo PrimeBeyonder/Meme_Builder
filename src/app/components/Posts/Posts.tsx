@@ -152,27 +152,27 @@ function MusicPostCard({ post }: { post: MusicPost }) {
           alt={post.title} 
           className="w-full h-48 object-cover"
         />
-        <Avatar className="absolute top-4 left-4 border-2 border-white">
+        <Avatar className="absolute top-4 left-4 border-2 border-background">
           <AvatarImage src={post.uploadedBy.avatar} alt={post.uploadedBy.name} />
           <AvatarFallback>{post.uploadedBy.name.charAt(0)}</AvatarFallback>
         </Avatar>
       </CardHeader>
       <CardContent className="p-4">
         <h3 className="text-xl font-bold mb-1">{post.title}</h3>
-        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">{post.singer}</p>
-        <p className="text-sm text-gray-700 dark:text-gray-300 mb-2 line-clamp-2">{post.description}</p>
+        <p className="text-sm text-muted-foreground mb-2">{post.singer}</p>
+        <p className="text-sm text-foreground mb-2 line-clamp-2">{post.description}</p>
         <div className="flex flex-wrap gap-1 mb-2">
           {post.tags.map((tag) => (
             <Badge key={tag} variant="secondary" className="text-xs">{tag}</Badge>
           ))}
         </div>
       </CardContent>
-      <CardFooter className="flex justify-between items-center p-4 bg-gray-50 dark:bg-gray-800">
+      <CardFooter className="flex justify-between items-center p-4 bg-muted">
         <Button 
           variant="ghost" 
           size="sm" 
           onClick={() => setIsLiked(!isLiked)}
-          className={isLiked ? 'text-red-500 hover:text-red-600' : 'text-gray-500 hover:text-gray-600'}
+          className={isLiked ? 'text-destructive hover:text-destructive/90' : 'text-muted-foreground hover:text-foreground'}
         >
           <Heart className="mr-1 h-4 w-4" fill={isLiked ? 'currentColor' : 'none'} />
           {post.likes}
@@ -187,7 +187,7 @@ function MusicPostCard({ post }: { post: MusicPost }) {
           <PopoverContent className="w-80">
             <h4 className="font-semibold mb-2">Comments</h4>
             <ScrollArea className="h-[200px] w-full rounded-md border p-4">
-              <p className="text-sm text-gray-500">No comments yet. Be the first to comment!</p>
+              <p className="text-sm text-muted-foreground">No comments yet. Be the first to comment!</p>
             </ScrollArea>
             <div className="flex items-center mt-4">
               <Input placeholder="Add a comment..." className="flex-grow mr-2" />
@@ -199,7 +199,7 @@ function MusicPostCard({ post }: { post: MusicPost }) {
           variant="ghost" 
           size="sm"
           onClick={() => setIsSaved(!isSaved)}
-          className={isSaved ? 'text-blue-500 hover:text-blue-600' : 'text-gray-500 hover:text-gray-600'}
+          className={isSaved ? 'text-primary hover:text-primary/90' : 'text-muted-foreground hover:text-foreground'}
         >
           <Bookmark className="h-4 w-4" fill={isSaved ? 'currentColor' : 'none'} />
         </Button>
@@ -207,26 +207,27 @@ function MusicPostCard({ post }: { post: MusicPost }) {
     </Card>
   )
 }
-
 export default function MusicAppLayout() {
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-inherit">
-      <div className="lg:w-1/2 lg:sticky md:py-24 lg:top-0 lg:h-screen overflow-auto p-8 bg-white dark:bg-gray-800">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-gray-900">
-          Melody Stream
-        </h1>
-        <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">
-          Discover, share, and enjoy music like never before. Melody Stream brings you the latest tracks, hottest playlists, and a vibrant community of music lovers. Dive into a world of endless melodies and rhythms that move your soul.
-        </p>
-        <Button size="lg" className="bg-gray-800 text-white">
-          Start Listening Now
-        </Button>
-      </div>
-      <div className="lg:w-1/2 p-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {musicPosts.map((post) => (
-            <MusicPostCard key={post.id} post={post} />
-          ))}
+    <div className="flex flex-col min-h-screen bg-background">
+      <div className="flex flex-col lg:flex-row flex-grow">
+        <div className="lg:w-1/2 lg:sticky md:py-24 lg:top-0 lg:h-screen overflow-auto p-8">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
+            Melody Stream
+          </h1>
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8">
+            Discover, share, and enjoy music like never before. Melody Stream brings you the latest tracks, hottest playlists, and a vibrant community of music lovers. Dive into a world of endless melodies and rhythms that move your soul.
+          </p>
+          <Button size="lg">
+            Start Listening Now
+          </Button>
+        </div>
+        <div className="lg:w-1/2 p-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {musicPosts.map((post) => (
+              <MusicPostCard key={post.id} post={post} />
+            ))}
+          </div>
         </div>
       </div>
     </div>

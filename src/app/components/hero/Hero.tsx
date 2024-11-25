@@ -9,6 +9,7 @@ import { Slider } from "@/components/ui/slider"
 import Image from "next/image"
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
+import { useTheme } from "next-themes"
 
 const featuredSongs = [
   { id: 1, title: "Love YourSelf", artist: "Justin Bieber", cover: "/song_cover/LoveYourself.png", audio: "/simple_mp3/loveUrSelf.mp3" },
@@ -31,8 +32,7 @@ const relatedArtists = [
   { name: "Future", image: "/artists/future.jpg" },
   { name: "Ski Mask The Slump God", image: "/artists/ski-mask-the-slump-god.jpg" },
   { name: "XXXTentacion", image: "/artists/xxxtentacion.jpg" }
-];
-
+]
 
 export default function HeroSection() {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -43,6 +43,7 @@ export default function HeroSection() {
   const [searchTerm, setSearchTerm] = useState("")
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const [isClient, setIsClient] = useState(false)
+  const { theme } = useTheme()
 
   useEffect(() => {
     setIsClient(true)
@@ -123,6 +124,7 @@ export default function HeroSection() {
     setCurrentSongIndex(index)
     setIsPlaying(true)
   }
+
   const handleTimeChange = ([value]: number[]) => {
     if (audioRef.current) {
       audioRef.current.currentTime = value
@@ -148,7 +150,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-gray-800">
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight">
             Discover and Share the Music You Love!
           </h1>
           
@@ -169,8 +171,8 @@ export default function HeroSection() {
             <div className="">
               <Button 
                 size="lg"
-                className="w-2/3 mt-1  md:w-auto bg-gray-900"
-                >
+                className="w-2/3 mt-1 md:w-auto"
+              >
                 Explore Now
               </Button>
             </div>
@@ -179,7 +181,7 @@ export default function HeroSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <motion.div 
-            className="bg-white rounded-xl p-4 h-[400px]"
+            className="bg-card text-card-foreground rounded-xl p-4 h-[400px]"
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
@@ -245,7 +247,7 @@ export default function HeroSection() {
           </motion.div>
 
           <motion.div
-            className="bg-white rounded-xl p-4 h-[400px] overflow-y-auto"
+            className="bg-card text-card-foreground rounded-xl p-4 h-[400px] overflow-y-auto"
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
@@ -255,8 +257,8 @@ export default function HeroSection() {
               {filteredSongs.map((song, index) => (
                 <li 
                   key={song.id} 
-                  className={`flex items-center gap-4 p-2 rounded-md hover:bg-gray-50 transition-colors ${
-                    currentSongIndex === index ? 'bg-gray-50' : ''
+                  className={`flex items-center gap-4 p-2 rounded-md hover:bg-accent transition-colors ${
+                    currentSongIndex === index ? 'bg-accent' : ''
                   }`}
                 >
                   <Image
