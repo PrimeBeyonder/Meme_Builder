@@ -1,0 +1,89 @@
+{
+    "ENG": {
+      "feature": {
+        "title": "Powerful Features for Your Success",
+        "features": [
+          {
+            "title": "Upload & Share",
+            "description": "Share your music with the world. Upload tracks and let others discover your talent."
+          },
+          {
+            "title": "Connect",
+            "description": "Build your network of followers and connect with other musicians and music lovers."
+          },
+          {
+            "title": "Create Playlists",
+            "description": "Curate your perfect playlist. Mix and match tracks to create the perfect vibe."
+          },
+          {
+            "title": "Stream Anywhere",
+            "description": "Listen to your favorite tracks anywhere, anytime. Our platform works on all devices."
+          }
+        ]
+      },
+      "hero": {
+        "title": "Discover and Share the Music You Love!",
+        "subtitle": "Upload your tracks, connect with music lovers, and build your playlists.",
+        "searchPlaceholder": "Search for songs, artists, or genres...",
+        "exploreNow": "Explore Now",
+        "relatedArtists": "Related Artists",
+        "nowPlaying": "Now Playing"
+      },
+      "navbar": {
+        "title": "Melodify",
+        "explore": "Explore",
+        "about": "About",
+        "features": "Features",
+        "contact": "Contact"
+      },
+      "post": {
+        "title": "Melody Stream",
+        "description": "Discover, share, and enjoy music like never before. Melody Stream brings you the latest tracks, hottest playlists, and a vibrant community of music lovers. Dive into a world of endless melodies and rhythms that move your soul.",
+        "startListening": "Start Listening Now"
+      }
+    },
+    "日本": {
+      "feature": {
+        "title": "あなたの成功のための強力な機能",
+        "features": [
+          {
+            "title": "アップロードと共有",
+            "description": "あなたの音楽を世界中で共有しましょう。トラックをアップロードして、あなたの才能を発見してもらいましょう。"
+          },
+          {
+            "title": "つながる",
+            "description": "フォロワーのネットワークを構築し、他のミュージシャンや音楽愛好家とつながりましょう。"
+          },
+          {
+            "title": "プレイリストを作成",
+            "description": "理想的なプレイリストを作成しましょう。トラックを組み合わせて完璧な雰囲気を作り出しましょう。"
+          },
+          {
+            "title": "どこでもストリーミング",
+            "description": "お気に入りのトラックをいつでもどこでも聴きましょう。当プラットフォームはすべてのデバイスで動作します。"
+          }
+        ]
+      },
+      "hero": {
+        "title": "好きな音楽を見つけて共有しよう！",
+        "subtitle": "トラックをアップロードし、音楽愛好家とつながり、プレイリストを作りましょう。",
+        "searchPlaceholder": "曲名、アーティスト、またはジャンルを検索...",
+        "exploreNow": "今すぐ探索",
+        "relatedArtists": "関連アーティスト",
+        "nowPlaying": "再生中"
+      },
+      "navbar": {
+        "title": "Melodify",
+        "explore": "探索",
+        "about": "概要",
+        "features": "機能",
+        "contact": "連絡先"
+      },
+      "post": {
+        "title": "メロディストリーム",
+        "description": "これまでにない方法で音楽を発見し、共有し、楽しみましょう。メロディストリームは最新のトラック、最も人気のあるプレイリスト、そして音楽愛好家の活気あるコミュニティをお届けします。無限のメロディーとリズムの世界に飛び込んで、心を動かす体験を。 ",
+        "startListening": "今すぐ聴き始める"
+      }
+    }
+  }
+  

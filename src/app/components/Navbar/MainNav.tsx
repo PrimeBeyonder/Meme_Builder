@@ -1,41 +1,57 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import Link from "next/link"
-import { Music2, Sun, Moon, Globe } from 'lucide-react'
-import { useTheme } from "next-themes"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
-import { MenuToggle } from "../MenuToggle"
-
-const navItems = [
-  { title: "Explore", href: "#explore" },
-  { title: "About", href: "#about" },
-  { title: "Features", href: "#features" },
-  { title: "Contact", href: "#contact" }
-]
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { Music2, Sun, Moon, Globe } from "lucide-react";
+import { useTheme } from "next-themes";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { MenuToggle } from "../MenuToggle";
 
 export function MainNav() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [language, setLanguage] = useState("ENG")
-  const { theme, setTheme } = useTheme()
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [language, setLanguage] = useState("ENG");
+  const [navbarData, setNavbarData] = useState({
+    title: "",
+    explore: "",
+    about: "",
+    features: "",
+    contact: "",
+  });
+  const { theme, setTheme } = useTheme();
 
+  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0)
-    }
+      setIsScrolled(window.scrollY > 0);
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Fetch navigation data based on selected language
+  useEffect(() => {
+    const fetchNavbarData = async () => {
+      try {
+        const response = await fetch("/lang/data.json");
+        const data = await response.json();
+        setNavbarData(data[language]?.navbar || {});
+      } catch (error) {
+        console.error("Failed to load navbar data:", error);
+      }
+    };
+
+    fetchNavbarData();
+  }, [language]);
 
   const toggleLanguage = () => {
-    setLanguage(prevLang => prevLang === "ENG" ? "日本" : "ENG")
-  }
+    setLanguage((prevLang) => (prevLang === "ENG" ? "日本" : "ENG"));
+  };
 
   const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark")
-  }
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
 
   return (
     <header
@@ -46,25 +62,47 @@ export function MainNav() {
     >
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex h-16 items-center justify-between">
+          {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <Music2 className="h-6 w-6" />
-            <span className="font-bold text-xl hidden sm:inline-block">Melodify</span>
+            <span className="font-bold text-xl hidden sm:inline-block">{navbarData.title}</span>
           </Link>
 
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center justify-center space-x-1">
-            {navItems.map((item) => (
-              <Link
-                key={item.title}
-                href={item.href}
-                className="px-3 py-2 text-sm font-medium text-foreground transition-colors duration-300 hover:text-primary relative group rounded-md hover:bg-accent"
-              >
-                {item.title}
-                <span className="absolute inset-x-0 bottom-0 h-0.5 bg-primary scale-x-0 transition-all duration-300 group-hover:scale-x-100" />
-              </Link>
-            ))}
+            <Link
+              href="#explore"
+              className="px-3 py-2 text-sm font-medium text-foreground transition-colors duration-300 hover:text-primary relative group rounded-md hover:bg-accent"
+            >
+              {navbarData.explore}
+              <span className="absolute inset-x-0 bottom-0 h-0.5 bg-primary scale-x-0 transition-all duration-300 group-hover:scale-x-100" />
+            </Link>
+            <Link
+              href="#about"
+              className="px-3 py-2 text-sm font-medium text-foreground transition-colors duration-300 hover:text-primary relative group rounded-md hover:bg-accent"
+            >
+              {navbarData.about}
+              <span className="absolute inset-x-0 bottom-0 h-0.5 bg-primary scale-x-0 transition-all duration-300 group-hover:scale-x-100" />
+            </Link>
+            <Link
+              href="#features"
+              className="px-3 py-2 text-sm font-medium text-foreground transition-colors duration-300 hover:text-primary relative group rounded-md hover:bg-accent"
+            >
+              {navbarData.features}
+              <span className="absolute inset-x-0 bottom-0 h-0.5 bg-primary scale-x-0 transition-all duration-300 group-hover:scale-x-100" />
+            </Link>
+            <Link
+              href="#contact"
+              className="px-3 py-2 text-sm font-medium text-foreground transition-colors duration-300 hover:text-primary relative group rounded-md hover:bg-accent"
+            >
+              {navbarData.contact}
+              <span className="absolute inset-x-0 bottom-0 h-0.5 bg-primary scale-x-0 transition-all duration-300 group-hover:scale-x-100" />
+            </Link>
           </nav>
 
+          {/* Action Buttons */}
           <div className="flex items-center space-x-6">
+            {/* Language Toggle */}
             <Button
               variant="ghost"
               size="sm"
@@ -76,6 +114,7 @@ export function MainNav() {
               <span className="text-xs font-medium">{language}</span>
             </Button>
 
+            {/* Theme Toggle */}
             <Button
               variant="ghost"
               size="icon"
@@ -87,11 +126,11 @@ export function MainNav() {
               <span className="sr-only">Toggle theme</span>
             </Button>
 
-            <MenuToggle items={navItems} />
+            {/* Mobile Menu */}
+            <MenuToggle items={Object.values(navbarData).slice(1)} />
           </div>
         </div>
       </div>
     </header>
-  )
+  );
 }
-
