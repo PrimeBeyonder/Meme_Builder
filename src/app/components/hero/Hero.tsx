@@ -20,19 +20,48 @@ const featuredSongs = [
 ]
 
 const relatedArtists = [
-  { name: "Juice WRLD", image: "/artists/juceWrld.png" },
-  { name: "The 1975", image: "/artists/the1975.jpg" },
-  { name: "Tyler, The Creator", image: "/artists/tyler-the-creator.jpg" },
-  { name: "Playboi Carti", image: "/artists/playboi-carti.jpg" },
-  { name: "Travis Scott", image: "/artists/travis-scott.jpg" },
-  { name: "Lil Uzi Vert", image: "/artists/lil-uzi-vert.jpg" },
-  { name: "Kanye West", image: "/artists/kanye-west.jpg" },
-  { name: "Lil Peep", image: "/artists/lil-peep.jpg" },
-  { name: "Post Malone", image: "/artists/post-malone.jpg" },
-  { name: "Future", image: "/artists/future.jpg" },
-  { name: "Ski Mask The Slump God", image: "/artists/ski-mask-the-slump-god.jpg" },
-  { name: "XXXTentacion", image: "/artists/xxxtentacion.jpg" }
-]
+  {
+    name: "Juice WRLD",
+    profile: "https://www.instagram.com/juicewrld999/",
+    image: "/artists/juceWrld.png",
+  },
+  {
+    name: "The 1975",
+    profile: "https://www.instagram.com/the1975/",
+    image: "/artists/the1975.jpg",
+  },
+  {
+    name: "Tyler, The Creator",
+    profile: "https://www.instagram.com/feliciathegoat/",
+    image: "/artists/3.jpg",
+  },
+  {
+    name: "Playboi Carti",
+    profile: "https://www.instagram.com/playboicarti/",
+    image: "/artists/4.jpg",
+  },
+  {
+    name: "Travis Scott",
+    profile: "https://www.instagram.com/travisscott/",
+    image: "/artists/5.jpg",
+  },
+  {
+    name: "Lil Uzi Vert",
+    profile: "https://www.instagram.com/liluzivert/",
+    image: "/artists/6.jpg",
+  },
+  {
+    name: "Kanye West",
+    profile: "https://www.instagram.com/kanyewest/",
+    image: "/artists/7.jpg",
+  },
+  {
+    name: "Lil Peep",
+    profile: "https://www.instagram.com/lilpeep/",
+    image: "/artists/8.jpg",
+  },
+];
+
 
 export default function HeroSection() {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -310,12 +339,14 @@ export default function HeroSection() {
               <SwiperSlide key={artist.name}>
                 <div className="flex flex-col items-center p-2">
                   <div className="w-24 h-24 relative rounded-full overflow-hidden mb-2">
+                    <a href={artist.profile}>
                     <Image
                       src={artist.image}
                       alt={artist.name}
                       layout="fill"
                       objectFit="cover"
-                    />
+                      />
+                    </a>
                   </div>
                   <p className="text-sm font-medium text-center">{artist.name}</p>
                 </div>

@@ -6,7 +6,7 @@ import { Music2, Sun, Moon, Globe } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { MenuToggle } from "../MenuToggle";
+// import { MenuToggle } from "../MenuToggle";
 
 export function MainNav() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -127,7 +127,7 @@ export function MainNav() {
             </Button>
 
             {/* Mobile Menu */}
-            <MenuToggle items={Object.values(navbarData).slice(1)} />
+            {/* <MenuToggle items={Object.values(navbarData).slice(1)} /> */}
           </div>
         </div>
       </div>
